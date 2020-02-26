@@ -1,0 +1,21 @@
+{
+    "name": "kershoc/io-tower",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kershoc",
+            "email": "kershoc@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Bot\\": ["src/"] }
+    },
+    "require": {
+        "php": ">=7.2",
+        "ext-json": "^1.6"
+    },
+    "require-dev": {
+        "swoft/swoole-ide-helper": "^4.4"
+    }
+}
