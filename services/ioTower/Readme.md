@@ -2,7 +2,7 @@
 
 ![](https://vignette.wikia.nocookie.net/tron/images/b/bb/I.o_tower.jpg/revision/latest/scale-to-width-down/250?cb=20081119180401)
 
-Central Communication Service for Dumont.  This ioTower is the central comunications hub for the different microservice clients to talk with each other.  Any program that wishes to interface with their user does so at this tower.
+Central Communication Service for Dumont.  This ioTower is the central communications hub for the different micro-service clients to talk with each other.  Any program that wishes to interface with their user does so at this tower.
 
 Websocket server listens on port 6889.  Connected clients can subscribe to event rooms.  Anytime a client sends a message, that message will be checked for an event room.  If that room exists then the message will be broadcast to any clients subscribed to that event room.
 
@@ -17,7 +17,7 @@ The ioTower believes in free communication, so it imposes no restriction on the 
 ```
 Sending the above json to the ioTower will cause the tower to search for an event room named chat.  If the room exists in the tower, the above json will be broadcast back to everyone listening in that room.
 
-This allows any number of clients to connect to the tower and setup communication channels to pass data around.  Since the event message is passed unaltered, clients using the tower to communicate can pass any arbitary data they wish as long as it conforms to the json format.  Messages sent to the tower that are not valid json, or do not have an event node are ignored by the tower.
+This allows any number of clients to connect to the tower and setup communication channels to pass data around.  Since the event message is passed unaltered, clients using the tower to communicate can pass any arbitrary data they wish as long as it conforms to the json format.  Messages sent to the tower that are not valid json, or do not have an event node are ignored by the tower.
 
 ## Reserved Events
 #### Subscribing to Event Rooms
