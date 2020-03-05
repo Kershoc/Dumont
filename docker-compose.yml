@@ -1,0 +1,18 @@
+version: '3'
+services: 
+    iotower:
+        build: .
+        image: dumont-bot
+        ports: 
+            - "6889:6889"
+        volumes: 
+            - ".:/opt/dumontbot"
+        command: php services/ioTower/ioTower.php
+        
+    twitch-chat:
+        image: dumont-bot
+        depends_on: 
+            - iotower
+        volumes: 
+            - ".:/opt/dumontbot"
+        command: php services/twitch-chat/twitch-chat.php
