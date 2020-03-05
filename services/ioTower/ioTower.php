@@ -6,7 +6,7 @@ use Bot\Handlers;
 use Bot\IOTower;
 use Swoole\Websocket\Server;
 
-$server = new Server('127.0.0.1', 6889);
+$server = new Server('iotower', 6889);
 
 $server->set(array(
                        'worker_num' => 1, // The number of worker processes
@@ -18,5 +18,5 @@ $handlers = new Handlers(new IOTower());
 $server->on('message', [$handlers, 'onMessage']);
 $server->on('open', [$handlers, 'onOpen']);
 $server->on('close', [$handlers, 'onClose']);
-
+echo "[" . date('Y-m-d H:i:s', time()) . "] Starting IoTower... \n";
 $server->start();

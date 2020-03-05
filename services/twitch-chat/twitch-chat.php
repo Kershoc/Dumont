@@ -11,6 +11,7 @@ use Bot\MessageParser;
 $dotenv = new Dotenv();
 $dotenv->load(realpath(__DIR__ . '/../../.env'));
 
+echo "[" . date('Y-m-d H:i:s', time()) . "] Starting Twitch Chat... \n";
 $run = new Scheduler;
 $run->add(function(){
 
@@ -26,7 +27,7 @@ $run->add(function(){
     $twitchIrc->push("CAP REQ :twitch.tv/tags");
     $twitchIrc->push("JOIN {$_ENV['TWITCH_ROOM']}");
 
-    $ioTower = new Client('127.0.0.1',6889);
+    $ioTower = new Client('iotower',6889);
     $ret = $ioTower->upgrade("/");
     if (!$ret) {
         throw new Exception("ioTower Websocket Upgrade Failed", $ioTower->errCode);
