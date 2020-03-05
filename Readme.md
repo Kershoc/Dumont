@@ -1,6 +1,6 @@
 # Dumont
 
-A microservice twitch chatbot written in PHP.
+A micro service twitch chat bot written in PHP.
 
 #### Requirements
 
