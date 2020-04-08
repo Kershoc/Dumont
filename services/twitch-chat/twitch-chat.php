@@ -7,6 +7,7 @@ use Swoole\Coroutine\Scheduler;
 use Swoole\Coroutine\Http\Client;
 use Symfony\Component\Dotenv\Dotenv;
 use Bot\MessageParser;
+use Bot\MessageDispatcher;
 
 $dotenv = new Dotenv();
 $dotenv->load(realpath(__DIR__ . '/../../.env'));
@@ -36,13 +37,13 @@ $run->add(function(){
 
 
     Coroutine::create(function()use($twitchIrc, $ioTower){
+        $dispatcher = new MessageDispatcher($twitchIrc, $ioTower);
         while (true) {
             if ($data = $twitchIrc->recv()) {
                 // Twitch parse Message
                 foreach (explode("\n", trim($data->data)) as $line) {
                     $parser = new MessageParser();
-                    $message = ['event'=>'twitch', 'payload' => $parser->parse($line)];
-                    $ioTower->push(json_encode($message));
+                    $dispatcher->dispatch($parser->parse($line));
                 }
             }
             Coroutine::sleep(0.5);
