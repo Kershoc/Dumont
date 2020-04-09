@@ -17,9 +17,9 @@ class MessageDispatcher
 
     public function dispatch(MessageObject $message_object): void
     {
-        $command_class = "Bot\\Handlers\\" . ucwords(strtolower($message_object->command));
-        if (class_exists($command_class)) {
-            $handler = new $command_class($this->twitchIrc, $this->ioTower);
+        $message_class = "Bot\\Handlers\\" . ucwords(strtolower($message_object->command));
+        if (class_exists($message_class)) {
+            $handler = new $message_class($this->twitchIrc, $this->ioTower);
             $handler->handle($message_object);
         }
     }

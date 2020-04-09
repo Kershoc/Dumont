@@ -4,7 +4,7 @@ namespace Bot\Handlers;
 
 use Bot\MessageObject;
 
-interface CommandHandler
+interface MessageHandler
 {
     public function handle(MessageObject $messageObject): void;
 }

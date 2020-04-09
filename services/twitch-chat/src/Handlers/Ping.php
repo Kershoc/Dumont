@@ -5,7 +5,7 @@ namespace Bot\Handlers;
 use Bot\MessageObject;
 use Swoole\Coroutine\http\Client;
 
-class Ping implements CommandHandler
+class Ping implements MessageHandler
 {
     private $ioTower;
     private $twitchIrc;
