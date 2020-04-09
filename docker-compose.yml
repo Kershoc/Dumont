@@ -16,3 +16,11 @@ services:
         volumes: 
             - ".:/opt/dumontbot"
         command: php services/twitch-chat/twitch-chat.php
+
+    mcp:
+        image: dumont-bot
+        depends_on: 
+            - iotower
+        volumes: 
+            - ".:/opt/dumontbot"
+        command: php services/mcp/mcp.php
