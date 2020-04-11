@@ -55,7 +55,7 @@ $run->add(function(){
                 // ioTower message handle
                 $message = json_decode($data->data, true);
                 if (is_array($message) && array_key_exists('event', $message) && $message['event'] === 'speak') {
-                    $twitchIrc->push("PRIVMSG {$_ENV['TWITCH_ROOM']} " . $message['payload']);
+                    $twitchIrc->push("PRIVMSG {$_ENV['TWITCH_ROOM']} :" . $message['payload']);
                 }
             }
             Coroutine::sleep(0.5);
