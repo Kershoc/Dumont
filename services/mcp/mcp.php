@@ -11,6 +11,9 @@ use Symfony\Component\Dotenv\Dotenv;
 use Bot\MessageObject;
 use Bot\CommandDispatcher;
 
+$dotenv = new Dotenv();
+$dotenv->load(realpath(__DIR__ . '/../../.env'));
+
 echo "[" . date('Y-m-d H:i:s', time()) . "] Starting MCP... End Of Line\n";
 $run = new Scheduler();
 $run->add(function(){
